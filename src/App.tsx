@@ -1,11 +1,14 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router } from 'react-router-dom';
+import AppRouter from './router/AppRouter';
 
 function App() {
   return (
-    <div className="bg-teal-300 ">
-      <p>React App with typescript & tailwind</p>
+    <div className="h-screen">
+      <Router>
+        <AppRouter></AppRouter>
+      </Router>
     </div>
   );
 }
