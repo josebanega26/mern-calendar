@@ -3,7 +3,9 @@ import Modal from 'react-modal';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
-
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../../redux/reducers/index';
+import { closeModal } from '../../redux/actions/uiActions';
 const customStyles = {
   content: {
     top: '50%',
@@ -15,14 +17,18 @@ const customStyles = {
   }
 };
 Modal.setAppElement('#root');
+
 const CalendarModal = () => {
+  const { modalActive } = useSelector((state: RootState) => state.ui);
+  const dispatch = useDispatch();
+
   const [form, setForm] = React.useState({
     title: 'Evento',
     note: '',
     startDate: moment().toDate(),
     endDate: moment().add(1, 'days').toDate()
   });
-  const modalIsOpen = true;
+
   const { title, note, startDate, endDate } = form;
 
   const handleForm = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
@@ -40,7 +46,7 @@ const CalendarModal = () => {
   }, [startDate]);
 
   const onRequestClose = () => {
-    console.log('clossing modall');
+    dispatch(closeModal());
   };
 
   const handleSubmit = (e: ChangeEvent<HTMLFormElement>) => {
@@ -57,7 +63,7 @@ const CalendarModal = () => {
   return (
     <div>
       <Modal
-        isOpen={modalIsOpen}
+        isOpen={modalActive}
         // onAfterOpen={afterOpenModal}
         onRequestClose={onRequestClose}
         closeTimeoutMS={200}

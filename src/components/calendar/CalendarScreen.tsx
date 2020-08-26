@@ -6,6 +6,8 @@ import { ICalendarEvent } from '../../models/calendarEvent';
 import Header from '../ui/Header';
 import CalendarEvent from './CalendarEvent';
 import CalendarModal from './CalendarModal';
+import { useDispatch } from 'react-redux';
+import { openModal } from '../../redux/actions/uiActions';
 const localizer = momentLocalizer(moment);
 
 const events: ICalendarEvent[] = [
@@ -21,6 +23,7 @@ const events: ICalendarEvent[] = [
 type ICalendar = 'month' | 'week' | 'day' | 'work_week' | 'agenda';
 
 const CalendarScreen = () => {
+  const dispatch = useDispatch();
   const [lastView, setLastView] = React.useState(localStorage.getItem('lastView') || 'month');
 
   const onViewChange = (e: ICalendar) => {
@@ -29,6 +32,7 @@ const CalendarScreen = () => {
   };
   const onDobleClick = (e: any) => {
     console.log('e :>> ', e);
+    dispatch(openModal());
   };
   const onSelect = (e: any) => {
     console.log('e :>> ', e);

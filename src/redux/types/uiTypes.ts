@@ -2,7 +2,9 @@ export const uiTypes = {
   SET_ERROR: '[UI] SetError',
   REMOVE_ERROR: '[UI] RemoveError',
   START_LOADING: '[UI] StarLoading',
-  STOP_LOADING: '[UI] StopLoading'
+  STOP_LOADING: '[UI] StopLoading',
+  OPEN_MODAL: '[UI] OpenModal',
+  CLOSE_MODAL: '[UI] CloseModal',
 };
 
 export interface SetError {
@@ -22,5 +24,14 @@ export interface StopLoading {
   type: typeof uiTypes.STOP_LOADING;
   payload: null;
 }
+export interface OpenModal {
+  type: typeof uiTypes.OPEN_MODAL;
+  payload: null;
+}
+export interface CloseModal {
+  type: typeof uiTypes.CLOSE_MODAL;
+  payload: null;
+}
 
-export type UiInterface = SetError | RemoveError | StartLoading | StopLoading;
+
+export type UiInterface = SetError | RemoveError | StartLoading | StopLoading | OpenModal | CloseModal;
