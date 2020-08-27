@@ -34,4 +34,4 @@ export interface CloseModal {
 }
 
 
-export type UiInterface = SetError | RemoveError | StartLoading | StopLoading | OpenModal | CloseModal;
+export type UiActionsTypes = SetError | RemoveError | StartLoading | StopLoading | OpenModal | CloseModal;

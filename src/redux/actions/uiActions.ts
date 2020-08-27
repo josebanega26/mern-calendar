@@ -1,11 +1,11 @@
-import { uiTypes, UiInterface } from '../types/uiTypes'
+import { uiTypes, UiActionsTypes } from '../types/uiTypes'
 
-export const openModal = (): UiInterface => ({
+export const openModal = (): UiActionsTypes => ({
   type: uiTypes.OPEN_MODAL,
   payload: null
 })
 
-export const closeModal = (): UiInterface => ({
+export const closeModal = (): UiActionsTypes => ({
   type: uiTypes.CLOSE_MODAL,
   payload: null
 })

@@ -2,27 +2,20 @@ import moment from 'moment';
 import React, { HTMLAttributes } from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import { ICalendarEvent } from '../../models/calendarEvent';
+import { useDispatch, useSelector } from 'react-redux';
+import { openModal } from '../../redux/actions/uiActions';
+import { RootState } from '../../redux/reducers';
 import Header from '../ui/Header';
 import CalendarEvent from './CalendarEvent';
 import CalendarModal from './CalendarModal';
-import { useDispatch } from 'react-redux';
-import { openModal } from '../../redux/actions/uiActions';
+import { setActive } from '../../redux/actions/calendarActions';
+
 const localizer = momentLocalizer(moment);
 
-const events: ICalendarEvent[] = [
-  {
-    title: 'Boss birthday',
-    start: moment().toDate(),
-    end: moment().add(2, 'hours').toDate(),
-    bgcolor: '#fafafa',
-    notes: 'By coffe',
-    user: { name: 'Jose Banega', uid: '123abcd' }
-  }
-];
 type ICalendar = 'month' | 'week' | 'day' | 'work_week' | 'agenda';
 
 const CalendarScreen = () => {
+  const { events } = useSelector((state: RootState) => state.calendar);
   const dispatch = useDispatch();
   const [lastView, setLastView] = React.useState(localStorage.getItem('lastView') || 'month');
 
@@ -30,12 +23,13 @@ const CalendarScreen = () => {
     localStorage.setItem('lastView', e);
     setLastView(e);
   };
-  const onDobleClick = (e: any) => {
-    console.log('e :>> ', e);
-    dispatch(openModal());
-  };
+  // const onDobleClick = (e: any) => {
+  //   console.log('e :>> ', e);
+  //   dispatch(openModal());
+  // };
   const onSelect = (e: any) => {
-    console.log('e :>> ', e);
+    dispatch(setActive(e));
+    dispatch(openModal());
   };
   const eventStyleGetter = (e: {
     title: string;
@@ -63,7 +57,6 @@ const CalendarScreen = () => {
         view={lastView as ICalendar}
         onView={onViewChange}
         eventPropGetter={eventStyleGetter}
-        onDoubleClickEvent={onDobleClick}
         onSelectEvent={onSelect}
         components={{ event: CalendarEvent }}
       />

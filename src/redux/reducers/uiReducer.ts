@@ -1,11 +1,11 @@
-import { uiTypes, UiInterface } from '../types/uiTypes'
-import { IUi } from '../../models/ui.interface'
+import { uiTypes, UiActionsTypes } from '../types/uiTypes'
+import { UiState } from '../../models/uiState'
 
-const initialState: IUi = {
+const initialState: UiState = {
   modalActive: false
 }
 
-export default (state = initialState, { type, payload }: UiInterface) => {
+export default (state = initialState, { type, payload }: UiActionsTypes): UiState => {
   switch (type) {
     case uiTypes.OPEN_MODAL:
       return { ...state, modalActive: true }

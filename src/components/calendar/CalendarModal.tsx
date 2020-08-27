@@ -64,10 +64,10 @@ const CalendarModal = () => {
     <div>
       <Modal
         isOpen={modalActive}
-        // onAfterOpen={afterOpenModal}
         onRequestClose={onRequestClose}
         closeTimeoutMS={200}
         style={customStyles}
+        overlayClassName="modal-fondo"
         contentLabel="Modal">
         <h1 className="block w-full text-center text-xl text-gray-800 font-bold pb-1"> Nuevo evento </h1>
         <hr className="mb-3" />
