@@ -17,8 +17,20 @@ const initialState: CalendarState = {
 
 export default (state = initialState, { type, payload }: CalendarActionsTypes): CalendarState => {
   switch (type) {
-    case calendarTypes.ADD_NEW: // TODO: FIX
-      return { ...state, activeEvent: null }
+    case calendarTypes.ADD_NEW:
+      return {
+        ...state, activeEvent: {
+          title: '',
+          start: moment().toDate(),
+          end: moment().add(1, 'day').toDate(),
+          bgcolor: '#fafafa',
+          notes: '',
+        }
+      }
+    case calendarTypes.CLEAN_ACTIVE_EVENT:
+      return {
+        ...state, activeEvent: null
+      }
     case calendarTypes.SET_ACTIVE:
       return { ...state, activeEvent: payload }
     default:

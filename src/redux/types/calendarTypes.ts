@@ -3,7 +3,8 @@ import { ICalendarEvent } from "../../models/calendarEvent";
 export const calendarTypes = {
   SET_ACTIVE: '[CALENDAR] SetActive',
   ADD_NEW: '[CALENDAR] AddNew',
-  DELETE_EVENT: '[CALENDAR] DeleteEvent'
+  DELETE_EVENT: '[CALENDAR] DeleteEvent',
+  CLEAN_ACTIVE_EVENT: '[CALENDAR] CleanActiveEvent',
 };
 
 export interface SetActive {
@@ -16,4 +17,9 @@ export interface AddNew {
   payload: ICalendarEvent
 }
 
-export type CalendarActionsTypes = SetActive | AddNew
+export interface CleanActiveEvent {
+  type: typeof calendarTypes.CLEAN_ACTIVE_EVENT;
+  payload: null
+}
+
+export type CalendarActionsTypes = SetActive | AddNew | CleanActiveEvent

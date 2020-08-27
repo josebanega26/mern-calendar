@@ -10,3 +10,8 @@ export const setActive = (event: ICalendarEvent): CalendarActionsTypes => ({
   type: calendarTypes.SET_ACTIVE,
   payload: event
 })
+
+export const cleanActiveEvent = (): CalendarActionsTypes => ({
+  type: calendarTypes.CLEAN_ACTIVE_EVENT,
+  payload: null
+})

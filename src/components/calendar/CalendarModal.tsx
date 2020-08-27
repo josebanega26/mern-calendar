@@ -6,6 +6,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../redux/reducers/index';
 import { closeModal } from '../../redux/actions/uiActions';
+import { cleanActiveEvent } from '../../redux/actions/calendarActions';
 const customStyles = {
   content: {
     top: '50%',
@@ -46,6 +47,7 @@ const CalendarModal = () => {
   }, [startDate]);
 
   const onRequestClose = () => {
+    dispatch(cleanActiveEvent());
     dispatch(closeModal());
   };
 

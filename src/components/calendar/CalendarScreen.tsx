@@ -9,6 +9,7 @@ import Header from '../ui/Header';
 import CalendarEvent from './CalendarEvent';
 import CalendarModal from './CalendarModal';
 import { setActive } from '../../redux/actions/calendarActions';
+import FabButton from '../ui/FabButton';
 
 const localizer = momentLocalizer(moment);
 
@@ -61,6 +62,7 @@ const CalendarScreen = () => {
         components={{ event: CalendarEvent }}
       />
       <CalendarModal />
+      <FabButton></FabButton>
     </React.Fragment>
   );
 };

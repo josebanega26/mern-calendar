@@ -45,3 +45,14 @@
 .react-datepicker-wrapper {
   width: 100%;
 }
+
+.fab {
+  bottom: 25px;
+  position: fixed;
+  right: 25px;
+}
+.fab-icon {
+  fill: white;
+  width: 28px;
+  height: 28px;
+}
