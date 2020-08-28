@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../redux/reducers/index';
 import { closeModal } from '../../redux/actions/uiActions';
 import { cleanActiveEvent } from '../../redux/actions/calendarActions';
+
 const customStyles = {
   content: {
     top: '50%',
@@ -17,18 +18,19 @@ const customStyles = {
     transform: 'translate(-50%, -50%)'
   }
 };
+const initValue = {
+  title: 'Evento',
+  note: '',
+  startDate: moment().toDate(),
+  endDate: moment().add(1, 'days').toDate()
+};
 Modal.setAppElement('#root');
 
 const CalendarModal = () => {
   const { modalActive } = useSelector((state: RootState) => state.ui);
   const dispatch = useDispatch();
 
-  const [form, setForm] = React.useState({
-    title: 'Evento',
-    note: '',
-    startDate: moment().toDate(),
-    endDate: moment().add(1, 'days').toDate()
-  });
+  const [form, setForm] = React.useState(initValue);
 
   const { title, note, startDate, endDate } = form;
 

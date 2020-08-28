@@ -24,13 +24,11 @@ const CalendarScreen = () => {
     localStorage.setItem('lastView', e);
     setLastView(e);
   };
-  // const onDobleClick = (e: any) => {
-  //   console.log('e :>> ', e);
-  //   dispatch(openModal());
-  // };
+  const onDobleClick = (e: any) => {
+    dispatch(openModal());
+  };
   const onSelect = (e: any) => {
     dispatch(setActive(e));
-    dispatch(openModal());
   };
   const eventStyleGetter = (e: {
     title: string;
@@ -56,6 +54,7 @@ const CalendarScreen = () => {
         startAccessor="start"
         endAccessor="end"
         view={lastView as ICalendar}
+        onDoubleClickEvent={onDobleClick}
         onView={onViewChange}
         eventPropGetter={eventStyleGetter}
         onSelectEvent={onSelect}
